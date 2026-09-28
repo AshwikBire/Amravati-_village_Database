@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>अमरावती जिल्हा नोंदवही — तालुका आणि गाव संपर्कता</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f3ea; --ink:#1c2333; --line:#ddd2ba; --accent:#9a5b1f; --accent2:#33604a;
+  --muted:#6d6455; --card:#ffffff; --tagf:#e4ede2; --tagf-ink:#274a35;
+  --tagu:#e3ebef; --tagu-ink:#274158; --tagx:#f2e6da; --tagx-ink:#7a4b1e;
+  padding-top: env(safe-area-inset-top,0px); padding-bottom: env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#15171c; --ink:#eae6da; --line:#3a3c30; --accent:#d08a44; --accent2:#6fae86;
+    --muted:#a19a86; --card:#1c1f24;
+    --tagf:#20301f; --tagf-ink:#a9d6a8; --tagu:#1e2733; --tagu-ink:#a9c6e6; --tagx:#332620; --tagx-ink:#e6b494;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15171c; --ink:#eae6da; --line:#3a3c30; --accent:#d08a44; --accent2:#6fae86;
+  --muted:#a19a86; --card:#1c1f24;
+  --tagf:#20301f; --tagf-ink:#a9d6a8; --tagu:#1e2733; --tagu-ink:#a9c6e6; --tagx:#332620; --tagx-ink:#e6b494;
+}
+html{scroll-padding-top: calc(58px + env(safe-area-inset-top,0px));}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Noto Sans Devanagari', sans-serif; font-size:15px; line-height:1.65;
+}
+h1,h2,h3,.wordmark{font-family:'Noto Serif Devanagari', serif;}
+.runhead{
+  position:sticky; top:0; z-index:20; background:var(--paper);
+  border-bottom:1px solid var(--line); padding:12px 20px; padding-top:calc(12px + env(safe-area-inset-top,0px));
+  display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+}
+.wordmark{font-size:1.05rem; font-weight:600;}
+.runhead .meta{font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:var(--muted); letter-spacing:.02em;}
+.layout{display:grid; grid-template-columns:220px 1fr; max-width:1180px; margin:0 auto;}
+@media (max-width:860px){ .layout{grid-template-columns:1fr;} nav.rail{display:none;} }
+nav.rail{
+  position:sticky; top:58px; align-self:start; height:calc(100vh - 58px);
+  padding:26px 14px; border-right:1px solid var(--line); overflow-y:auto;
+}
+nav.rail a{
+  display:block; text-decoration:none; color:var(--muted); font-size:.86rem; padding:7px 10px;
+  border-radius:3px; margin-bottom:2px;
+}
+nav.rail a .no{font-family:'IBM Plex Mono',monospace; color:var(--accent); margin-right:8px;}
+nav.rail a:hover{background:var(--card); color:var(--ink);}
+main{padding:30px 26px 90px; min-width:0;}
+.hero{padding-bottom:22px; margin-bottom:6px; border-bottom:2px solid var(--ink);}
+.hero h1{font-size:1.85rem; margin:0 0 10px; line-height:1.3;}
+.hero p{color:var(--muted); max-width:62ch; margin:0 0 18px;}
+.stat-row{display:flex; flex-wrap:wrap; gap:0;}
+.stat-row .s{padding:10px 22px 10px 0; border-right:1px solid var(--line); margin-right:22px;}
+.stat-row .s:last-child{border-right:none;}
+.stat-row .n{font-family:'IBM Plex Mono',monospace; font-size:1.5rem; font-weight:600; color:var(--accent);}
+.stat-row .l{font-size:.75rem; color:var(--muted);}
+section{padding:38px 0; border-bottom:1px solid var(--line); scroll-margin-top:70px;}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:16px;}
+.sec-head .no{font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:.95rem;}
+.sec-head h2{font-size:1.2rem; margin:0;}
+.lead{max-width:72ch; color:var(--ink);}
+.notice{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:2px; padding:14px 16px; font-size:.9rem; max-width:80ch;}
+.notice b{color:var(--accent);}
+.controls{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0;}
+input[type=search], select{
+  font-family:'Noto Sans Devanagari',sans-serif; padding:8px 11px; border:1px solid var(--line); border-radius:4px;
+  background:var(--card); color:var(--ink); font-size:.85rem;
+}
+input[type=search]{flex:1; min-width:180px;}
+.table-scroll{overflow-x:auto; border:1px solid var(--line); border-radius:4px; background:var(--card);}
+table{border-collapse:collapse; width:100%; font-size:.82rem; min-width:780px;}
+th,td{padding:9px 11px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top;}
+th{background:var(--paper); position:sticky; top:0; cursor:pointer; white-space:nowrap; font-weight:600; font-size:.76rem; color:var(--muted);}
+tbody tr:hover{background:var(--paper);}
+td.num{font-family:'IBM Plex Mono',monospace; text-align:right;}
+.tag{display:inline-block; padding:2px 9px; border-radius:3px; font-size:.72rem;}
+.tag.forest{background:var(--tagf); color:var(--tagf-ink);}
+.tag.urban{background:var(--tagu); color:var(--tagu-ink);}
+.tag.unverified{background:var(--tagx); color:var(--tagx-ink);}
+.foot-note{font-size:.8rem; color:var(--muted); margin-top:10px; max-width:80ch;}
+.list-item{margin-bottom:20px; max-width:80ch;}
+.list-item h3{font-size:.98rem; margin:0 0 5px; color:var(--accent);}
+.list-item p{margin:0; color:var(--ink);}
+.list-item.blocked{opacity:.85;}
+.list-item.blocked h3{color:var(--muted);}
+dl.method dt{font-weight:600; margin-top:14px;}
+dl.method dd{margin:3px 0 0; color:var(--muted); font-size:.9rem; max-width:80ch;}
+.sources{font-size:.85rem; color:var(--muted); max-width:80ch;}
+.sources li{margin-bottom:7px;}
+.pagefoot{padding:26px 0 10px; font-size:.78rem; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+a{color:var(--accent2);}
+</style>
+</head>
+<body>
+
+<header class="runhead">
+  <span class="wordmark">अमरावती जिल्हा नोंदवही</span>
+  <span class="meta">तालुका व गाव संपर्कता · संकलन सप्टेंबर २०२६ · निर्माता: अश्विक बिरे</span>
+</header>
+
+<div class="layout">
+  <nav class="rail">
+    <a href="#summary"><span class="no">०१</span>सारांश</a>
+    <a href="#register"><span class="no">०२</span>तालुका नोंदवही</a>
+    <a href="#roadside"><span class="no">०३</span>रस्ता-किनारी गावे</a>
+    <a href="#melghat"><span class="no">०४</span>मेळघाट गावे</a>
+    <a href="#lists"><span class="no">०५</span>वर्गीकृत याद्या</a>
+    <a href="#method"><span class="no">०६</span>कार्यपद्धती</a>
+    <a href="#sources"><span class="no">०७</span>स्रोत</a>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <h1>अमरावती जिल्ह्यातील १४ तालुक्यांची स्रोतनिष्ठ नोंद — आणि जे सार्वजनिकरीत्या सिद्ध नाही, त्याची स्पष्ट कबुली.</h1>
+      <p>भारतीय जनगणना २०११, सामाजिक-आर्थिक जात जनगणना (SECC) २०११, आणि महाराष्ट्र वन विभाग/संवर्धन नोंदींवर आधारित. जिथे गाव-पातळीवर पडताळणीयोग्य स्रोत उपलब्ध नाही, तिथे अंदाज न लावता तसे स्पष्टपणे नमूद केले आहे.</p>
+      <div class="stat-row">
+        <div class="s"><div class="n">१४</div><div class="l">तालुके</div></div>
+        <div class="s"><div class="n">१,६३७</div><div class="l">जनगणना गावे</div></div>
+        <div class="s"><div class="n">१,०१२</div><div class="l">ग्रामपंचायती</div></div>
+        <div class="s"><div class="n">१२</div><div class="l">वैधानिक शहरे</div></div>
+        <div class="s"><div class="n">३५.९%</div><div class="l">शहरी लोकसंख्या</div></div>
+      </div>
+    </div>
+
+    <section id="summary">
+      <div class="sec-head"><span class="no">०१</span><h2>जिल्हा सारांश</h2></div>
+      <p class="lead">अमरावती जिल्हा सहा उपविभागांत आणि १४ तालुक्यांत विभागलेला असून २०११ च्या जनगणनेनुसार लोकसंख्या २८,८८,४४५ आहे. गावांची संख्या स्रोतानुसार थोडी वेगळी आहे — जनगणना २०११ नुसार १,६३७ वस्ती असलेली गावे, तर SECC २०११ नुसार १,९९८ महसुली गावे (काही निर्वस्ती वाड्या-वस्त्यांसह). दोन्ही आकडे जसेच्या तसे नोंदवले असून कोणतीही जुळवाजुळव केलेली नाही.</p>
+    </section>
+
+    <section id="register">
+      <div class="sec-head"><span class="no">०२</span><h2>तालुका नोंदवही</h2></div>
+      <p class="lead">प्रत्येक तालुक्याचे मुख्यालय शहर, उपविभाग, २०११ लोकसंख्या, SECC गाव व ग्रामपंचायत संख्या, आणि शहरी-घरगुती वाटा. "मुख्यालय दर्जा" हा टॅग फक्त तालुक्याच्या मुख्यालय शहर/जनगणना शहरासाठी आहे — कारण तेच एकमेव ठिकाण आहे जिथे नागरी किंवा वन-विषयक दर्जा स्वतंत्रपणे नोंदलेला आहे.</p>
+      <div class="controls">
+        <input type="search" id="search" placeholder="तालुका, मुख्यालय किंवा उपविभाग शोधा…">
+        <select id="filterTaluka"><option value="">सर्व तालुके</option></select>
+        <select id="filterTag">
+          <option value="">सर्व मुख्यालय दर्जे</option>
+          <option value="forest">वन/आदिवासी तालुका</option>
+          <option value="urban">नगरपालिका/महानगरपालिका मुख्यालय</option>
+          <option value="unverified">वैधानिक शहर नाही</option>
+        </select>
+      </div>
+      <div class="table-scroll">
+        <table id="talukaTable">
+          <thead><tr>
+            <th data-k="taluka">तालुका</th><th data-k="hq">मुख्यालय</th><th data-k="subdiv">उपविभाग</th>
+            <th data-k="pop">लोकसंख्या २०११</th><th data-k="villages">गावे</th><th data-k="gp">ग्रामपंचायती</th>
+            <th data-k="urbanhh">शहरी घरे %</th><th data-k="hqtag">मुख्यालय दर्जा</th><th data-k="note">टिपा</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="roadside">
+      <div class="sec-head"><span class="no">०३</span><h2>रस्ता-किनारी गावे — अमरावती, चांदूर बाजार, अचलपूर, भातकुली, अंजनगाव सुर्जी</h2></div>
+      <div class="notice">
+        <b>विनंती केली, पण अंदाजाने बनवली नाही.</b> या पाच तालुक्यांतील रस्त्यांलगतच्या वैयक्तिक गावांची नावे नोंदवणारा कोणताही सार्वजनिक स्रोत (NHAI, MSRDC, महाराष्ट्र सार्वजनिक बांधकाम विभाग) उपलब्ध नाही — महामार्ग मार्गवर्णनांत फक्त प्रमुख शहरांची नावे येतात. एकमेव पडताळणीयोग्य अपवाद म्हणजे <b>नांदगाव</b> (अमरावती तालुका) — जे NH-53 आणि राज्य महामार्ग क्रमांक १० यांच्या जंक्शनचे ठिकाण म्हणून स्पष्टपणे नोंदलेले आहे. उर्वरित चार तालुक्यांसाठी गाव-पातळीवरील यादी दिलेली नाही, कारण ती नकाशावरून अंदाज लावूनच तयार करावी लागली असती — आणि नेमके तेच टाळण्यासाठी ही नोंदवही बनवली आहे.
+      </div>
+      <p class="foot-note">स्रोत: विकिपीडिया — National Highway 53 (India); विकिपीडिया — Major State Highway 10 (Maharashtra); महाराष्ट्र राज्य रस्ते विकास महामंडळ (MSRDC).</p>
+    </section>
+
+    <section id="melghat">
+      <div class="sec-head"><span class="no">०४</span><h2>मेळघाट वन-गावे — धारणी व चिखलदरा</h2></div>
+      <p class="lead">जिल्ह्यातील एकमेव गावे ज्यांची वैयक्तिक नोंद सार्वजनिकरीत्या उपलब्ध आहे — कारण मेळघाट व्याघ्र प्रकल्पातील पुनर्वसन हे राष्ट्रीय व्याघ्र संवर्धन प्राधिकरण/वन विभागाच्या नोंदी, न्यायालयीन प्रक्रिया आणि पत्रकारितेच्या दस्तऐवजीकरणाच्या अधीन आहे. प्रकल्पात नोंदवलेल्या अंदाजे ५८–६१ गावांपैकी ही संपूर्ण यादी नाही — फक्त सार्वजनिक स्रोतांत नामोल्लेख असलेली गावे येथे दिली आहेत.</p>
+      <div class="table-scroll">
+        <table id="melghatTable">
+          <thead><tr><th>गाव</th><th>क्षेत्र/स्थिती</th><th>नोंदवलेली घटना</th><th>वर्ष</th><th>स्रोत</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="foot-note">टीप: वरील गावांची मराठी स्पेलिंग ही इंग्रजी स्रोतांतील उच्चारावर आधारित लिप्यंतरणे आहेत; अधिकृत महसुली मराठी स्पेलिंग स्वतंत्रपणे पडताळलेली नाहीत.</p>
+    </section>
+
+    <section id="lists">
+      <div class="sec-head"><span class="no">०५</span><h2>विनंती केलेल्या वर्गीकृत याद्या</h2></div>
+      <div class="list-item">
+        <h3>सुसंपर्कित तालुका शहरे — नोंदलेली</h3>
+        <p>जनगणना २०११ नुसार स्वतंत्रपणे वर्गीकृत सर्व १२ वैधानिक शहरे: अमरावती (महानगरपालिका, पूर्वीच्या NH-6 / सध्याच्या NH-53 मार्गावर), अचलपूर, अंजनगाव, चांदूरबाजार, चांदूर रेल्वे, दर्यापूर (बानोसा), दत्तापूर-धामणगाव, मोर्शी, शेंदूरजना, वरुड (नगरपालिका), चिखलदरा व धारणी (जनगणना शहरे).</p>
+      </div>
+      <div class="list-item">
+        <h3>मेळघाट/वन गावे — नोंदलेला उपसंच</h3>
+        <p>सिप्ना, गुगामल व अकोट वन्यजीव विभागांतील १७ नामोल्लेखित गावे, सोर्स केलेल्या पुनर्वसन/वनहक्क घटनांसह — विभाग ०४ पाहा.</p>
+      </div>
+      <div class="list-item">
+        <h3>तालुका-स्तरीय शहरी गावे — नोंदलेली</h3>
+        <p>वरील नोंदवहीतील १४ तालुका मुख्यालये, प्रत्येक आपापल्या तालुक्याचे प्रशासकीय व बाजारपेठ केंद्र.</p>
+      </div>
+      <div class="list-item blocked">
+        <h3>ग्रामीण/दुर्गम गावे — केवळ अंशतः</h3>
+        <p>१,६३७ पैकी १,६२५ जनगणना गावे व्याख्येनुसार ग्रामीण आहेत, पण उपलब्ध एकमेव रस्ता-संपर्क माहिती म्हणजे स्कॅन केलेल्या जिल्हा जनगणना हस्तपुस्तिकेतील "पक्का रस्ता: होय/नाही" हे द्विअंकी क्षेत्र — जे या सत्रात गाव-निहाय काढता आले नाही. त्यामुळे प्रत्येक गावाला बारीक रस्ता-श्रेणीत विभागणे प्रामाणिकपणे शक्य नाही.</p>
+      </div>
+      <div class="list-item blocked">
+        <h3>गाव-निहाय महिला-सुरक्षा पायाभूत सुविधा — उपलब्ध नाही</h3>
+        <p>जनगणना, MRSAC, महाराष्ट्र पोलीस किंवा वन विभाग — यापैकी कोणताही सरकारी स्रोत अमरावती जिल्ह्यासाठी गाव-निहाय महिला-सुरक्षा पायाभूत सुविधांची नोंद ठेवत नाही. अंदाज न लावता ही यादी वगळण्यात आली आहे.</p>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="sec-head"><span class="no">०६</span><h2>कार्यपद्धती व मर्यादा</h2></div>
+      <dl class="method">
+        <dt>काय पडताळलेले आहे</dt>
+        <dd>तालुका सीमा, मुख्यालय शहरे, २०११ लोकसंख्या, SECC गाव/ग्रामपंचायत संख्या, शहरी/ग्रामीण घरगुती वाटा, तारीख नोंदवलेली मेळघाट पुनर्वसन गावे, आणि विभाग ०३ मधील दोन महामार्ग तथ्ये.</dd>
+        <dt>काय पडताळलेले नाही, आणि का</dt>
+        <dd>जिल्ह्यातील सुमारे १,६०० गावांचे प्रत्येकी रस्ता-श्रेणी वर्गीकरण — महाराष्ट्रातील कोणत्याही जिल्ह्यासाठी असा सार्वजनिक डेटासेट अस्तित्वात नाही; जनगणना फक्त द्विअंकी पक्का-रस्ता माहिती नोंदवते. MRSAC च्या GIS रस्ता स्तरांना गाव नोंदींशी जोडलेले कोणतेही सार्वजनिकरीत्या उपलब्ध स्वरूप या सत्रात आढळले नाही. गाव-निहाय महिला-सुरक्षा पायाभूत सुविधा कोणत्याही सरकारी स्रोताद्वारे नोंदलेली नाही.</dd>
+        <dt>येथे "अपडताळित" म्हणजे काय</dt>
+        <dd>ज्या गावाचा उल्लेख कोणत्याही उद्धृत स्रोतात वैयक्तिकरीत्या नाही, ते वर्गीकरणातून पूर्णपणे वगळले आहे — अंदाजित श्रेणी दिलेली नाही.</dd>
+      </dl>
+    </section>
+
+    <section id="sources">
+      <div class="sec-head"><span class="no">०७</span><h2>स्रोत</h2></div>
+      <ul class="sources">
+        <li>भारतीय जनगणना २०११ — जिल्हा जनगणना हस्तपुस्तिका: अमरावती, भाग अ. censusindia.gov.in</li>
+        <li>सामाजिक-आर्थिक जात जनगणना (SECC) २०११, अमरावती जिल्हा सारांश. secc.gov.in</li>
+        <li>citypopulation.de — अमरावती जिल्हा व उप-जिल्हा लोकसंख्या तक्ते (RGCC डेटावर आधारित)</li>
+        <li>विकिपीडिया — Amravati district; Dharni taluka (जिल्हा जनगणना हस्तपुस्तिकेचा हवाला देत); National Highway 53 (India); Major State Highway 10 (Maharashtra)</li>
+        <li>राष्ट्रीय व्याघ्र संवर्धन प्राधिकरण — मेळघाट व्याघ्र प्रकल्प संक्षिप्त टिपण, ntca.gov.in</li>
+        <li>Key Biodiversity Areas / BirdLife DataZone — मेळघाट व्याघ्र प्रकल्प तथ्यपत्रक</li>
+        <li>Down To Earth — "Melghat Malaise"; Land Conflict Watch — मेळघाट विस्थापन प्रकरण नोंद; Indigenous Arizona — मेळघाट व्याघ्र प्रकल्प आदिवासी-हक्क पृष्ठ</li>
+        <li>महाराष्ट्र शासन अमरावती जिल्हा संकेतस्थळ — amravati.gov.in</li>
+      </ul>
+    </section>
+
+    <div class="pagefoot">
+      <span>हा एक संदर्भ दस्तऐवज आहे, सर्वेक्षण नाही — अधिकृत किंवा कायदेशीर वापरासाठी मूळ जनगणना/SECC दस्तऐवजांशी पुन्हा पडताळणी करावी.</span>
+      <span><b>निर्माता: अश्विक बिरे</b></span>
+    </div>
+  </main>
+</div>
+
+<script>
+const talukas = [
+ {taluka:"अमरावती", hq:"अमरावती", subdiv:"अमरावती", pop:788327, villages:129, gp:59, urbanhh:"७७.८६%", hqtag:"urban", note:"जिल्हा मुख्यालय; पूर्वीच्या NH-6 (सध्याच्या NH-53) मुंबई–कोलकाता मार्गावर."},
+ {taluka:"भातकुली", hq:"भातकुली", subdiv:"अमरावती", pop:113109, villages:137, gp:50, urbanhh:"०%", hqtag:"unverified", note:"वैधानिक शहर नाही; SECC नुसार संपूर्णतः ग्रामीण घरे."},
+ {taluka:"नांदगाव खंडेश्वर", hq:"नांदगाव खंडेश्वर", subdiv:"अमरावती", pop:129810, villages:161, gp:159, urbanhh:"०%", hqtag:"unverified", note:"जिल्ह्यात सर्वाधिक ग्रामपंचायत संख्या; SECC नुसार संपूर्णतः ग्रामीण."},
+ {taluka:"अंजनगाव सुर्जी", hq:"अंजनगाव", subdiv:"दर्यापूर", pop:160903, villages:127, gp:49, urbanhh:"२८.४४%", hqtag:"urban", note:"मुख्यालय नगरपालिका (लोकसंख्या ५६,३८०, २०११)."},
+ {taluka:"दर्यापूर", hq:"दर्यापूर (बानोसा)", subdiv:"दर्यापूर", pop:175061, villages:150, gp:145, urbanhh:"१५.७६%", hqtag:"urban", note:"मुख्यालय नगरपालिका; जिल्ह्यात गाव-ते-ग्रामपंचायत प्रमाण सर्वाधिक."},
+ {taluka:"अचलपूर", hq:"अचलपूर", subdiv:"अचलपूर", pop:279479, villages:171, gp:70, urbanhh:"३४.९३%", hqtag:"urban", note:"मुख्यालय नगरपालिका (लोकसंख्या १,१२,३११, २०११), जिल्ह्यातील दुसरे मोठे शहर."},
+ {taluka:"चांदूर बाजार", hq:"चांदूरबाजार", subdiv:"अचलपूर", pop:196258, villages:169, gp:67, urbanhh:"७.३७%", hqtag:"urban", note:"मुख्यालय नगरपालिका."},
+ {taluka:"मोर्शी", hq:"मोर्शी", subdiv:"मोर्शी", pop:182484, villages:166, gp:69, urbanhh:"१७.७४%", hqtag:"urban", note:"मुख्यालय नगरपालिका (लोकसंख्या ३७,३३३, २०११)."},
+ {taluka:"वरुड", hq:"वरुड", subdiv:"मोर्शी", pop:224984, villages:139, gp:66, urbanhh:"२७.०७%", hqtag:"urban", note:"मुख्यालय वरुड व जनगणना शहर शेंदूरजना दोन्ही नगरपालिका; अमरावती–चांदूर बाजार–मोर्शी–वरुड–नरखेड विद्युतीकृत रेल्वेमार्गावर; संत्रा व्यापार केंद्र."},
+ {taluka:"धारणी", hq:"धारणी", subdiv:"धारणी", pop:184665, villages:157, gp:65, urbanhh:"०%", hqtag:"forest", note:"मेळघाट व्याघ्र प्रकल्प क्षेत्र; सातपुडा पर्वतरांग, दाट जंगल, बहुसंख्य आदिवासी (कोरकू ~६९% मातृभाषा); साक्षरता ६४.४९% (२०११), जिल्ह्यात सर्वात कमी."},
+ {taluka:"चिखलदरा", hq:"चिखलदरा", subdiv:"धारणी", pop:118815, villages:193, gp:53, urbanhh:"३.५१%", hqtag:"forest", note:"मेळघाट व्याघ्र प्रकल्प क्षेत्र; ~१,१०० मी उंचीवरील थंड हवेचे ठिकाण; जिल्ह्यात सर्वाधिक गाव संख्या."},
+ {taluka:"चांदूर रेल्वे", hq:"चांदूर रेल्वे", subdiv:"चांदूर (रेल्वे)", pop:96907, villages:92, gp:50, urbanhh:"१६.५३%", hqtag:"urban", note:"जिल्हा औद्योगिक प्रोफाइलनुसार सातपुडा पायथ्याचा डोंगराळ तालुका (~५०० मी उंची); मुख्यालय रेल्वेमार्गावर."},
+ {taluka:"तिवसा", hq:"तिवसा", subdiv:"चांदूर (रेल्वे)", pop:104728, villages:95, gp:48, urbanhh:"०%", hqtag:"unverified", note:"वैधानिक शहर नाही; SECC नुसार संपूर्णतः ग्रामीण; ज्वारी पिकवणारा प्रमुख तालुका."},
+ {taluka:"धामणगाव रेल्वे", hq:"धामणगाव रेल्वे", subdiv:"चांदूर (रेल्वे)", pop:132915, villages:112, gp:62, urbanhh:"१२.७८%", hqtag:"urban", note:"मुख्यालय (दत्तापूर-धामणगाव) रेल्वेमार्गावरील नगरपालिका."}
+];
+
+const melghat = [
+ {v:"बोरी (Bori)", zone:"गाभा क्षेत्र (गुगामल राष्ट्रीय उद्यान)", event:"अभयारण्याबाहेर पुनर्वसन", year:"२००१", src:"Indigenous Arizona / Land Conflict Watch"},
+ {v:"कुंड (Kund)", zone:"गाभा क्षेत्र (गुगामल राष्ट्रीय उद्यान)", event:"अभयारण्याबाहेर पुनर्वसन", year:"२००१", src:"Indigenous Arizona / Land Conflict Watch"},
+ {v:"कोहा (Koha)", zone:"गाभा क्षेत्र (गुगामल राष्ट्रीय उद्यान)", event:"अभयारण्याबाहेर पुनर्वसन", year:"२००१", src:"Indigenous Arizona / Land Conflict Watch"},
+ {v:"वैराट (Vairat)", zone:"गाभा क्षेत्र / वैराट शिखराजवळ", event:"पुनर्वसन सुरू २००३, पूर्ण २०१२", year:"२००३–२०१२", src:"Land Conflict Watch"},
+ {v:"चुर्णी (Churni)", zone:"गाभा क्षेत्र", event:"पुनर्वसन सुरू २००३; २००७ च्या वादातही नामोल्लेख", year:"२००३–२००७", src:"Land Conflict Watch / Down To Earth"},
+ {v:"धारगड (Dhargad)", zone:"गाभा क्षेत्र", event:"पुनर्वसन सुरू २००३, पूर्ण २०१२", year:"२००३–२०१२", src:"Land Conflict Watch"},
+ {v:"पस्तलाई (Pastalai)", zone:"गाभा अभयारण्य", event:"२००७ च्या पुनर्वसन/पुनर्स्थापन वादात नामोल्लेख", year:"२००७", src:"Down To Earth"},
+ {v:"धाकना (Dhakna)", zone:"गाभा क्षेत्र", event:"जमीन दावे नाकारले; विशेष संरक्षण दलाकडून कथित हटवणी", year:"२०१५", src:"Indigenous Arizona"},
+ {v:"सावऱ्या (Sawrya)", zone:"गाभा क्षेत्र", event:"तीच २०१५ ची हटवणी कारवाई", year:"२०१५", src:"Indigenous Arizona"},
+ {v:"भांडूम (Bhandum)", zone:"गाभा क्षेत्र", event:"तीच २०१५ ची हटवणी कारवाई", year:"२०१५", src:"Indigenous Arizona"},
+ {v:"बोरीखेडा (Borikheda)", zone:"गाभा क्षेत्र", event:"तीच २०१५ ची हटवणी कारवाई", year:"२०१५", src:"Indigenous Arizona"},
+ {v:"गडगाभांडूम (Gadgabhandum)", zone:"गाभा क्षेत्र", event:"तीच २०१५ ची हटवणी कारवाई", year:"२०१५", src:"Indigenous Arizona"},
+ {v:"दाभिया (Dabhiya)", zone:"गाभा क्षेत्र", event:"तीच २०१५ ची हटवणी कारवाई", year:"२०१५", src:"Indigenous Arizona"},
+ {v:"डोलार (Dolar)", zone:"गाभा क्षेत्र", event:"तीच २०१५ ची हटवणी कारवाई", year:"२०१५", src:"Indigenous Arizona"},
+ {v:"गडगामालूर (Gadgamalur)", zone:"गाभा क्षेत्र", event:"तीच २०१५ ची हटवणी कारवाई", year:"२०१५", src:"Indigenous Arizona"},
+ {v:"रोहिणखिडकी (Rohinkhidki)", zone:"अमोट वन्यजीव विभाग", event:"~६०० कुटुंबांचे पुनर्वसन", year:"२०१७", src:"Indigenous Arizona"},
+ {v:"सेमाडोह (Semadoh)", zone:"गाभा व्याघ्र प्रकल्प क्षेत्र", event:"७६ व्यक्तींचे वैयक्तिक वनहक्क दावे मान्य", year:"२०२०", src:"Indigenous Arizona"}
+];
+
+function fmt(n){return n.toLocaleString('en-IN');}
+
+function renderTaluka(rows){
+  document.querySelector('#talukaTable tbody').innerHTML = rows.map(r=>{
+    const cls = r.hqtag==='forest'?'forest':(r.hqtag==='urban'?'urban':'unverified');
+    const label = r.hqtag==='forest'?'वन/आदिवासी मुख्यालय':(r.hqtag==='urban'?'नगर/नगरपालिका मुख्यालय':'वैधानिक शहर नाही');
+    return `<tr><td>${r.taluka}</td><td>${r.hq}</td><td>${r.subdiv}</td>
+      <td class="num">${fmt(r.pop)}</td><td class="num">${r.villages}</td><td class="num">${r.gp}</td>
+      <td class="num">${r.urbanhh}</td><td><span class="tag ${cls}">${label}</span></td><td>${r.note}</td></tr>`;
+  }).join('');
+}
+function renderMelghat(){
+  document.querySelector('#melghatTable tbody').innerHTML = melghat.map(m=>
+    `<tr><td>${m.v}</td><td>${m.zone}</td><td>${m.event}</td><td>${m.year}</td><td>${m.src}</td></tr>`).join('');
+}
+renderTaluka(talukas); renderMelghat();
+
+const search = document.getElementById('search');
+const filterTag = document.getElementById('filterTag');
+const filterTaluka = document.getElementById('filterTaluka');
+talukas.forEach(r=>{ const o=document.createElement('option'); o.value=r.taluka; o.textContent=r.taluka; filterTaluka.appendChild(o); });
+function applyFilter(){
+  const q = search.value.trim().toLowerCase(), tag = filterTag.value, tal = filterTaluka.value;
+  renderTaluka(talukas.filter(r=>
+    (!q || r.taluka.toLowerCase().includes(q) || r.hq.toLowerCase().includes(q) || r.subdiv.toLowerCase().includes(q)) &&
+    (!tag || r.hqtag===tag) && (!tal || r.taluka===tal)
+  ));
+}
+search.addEventListener('input', applyFilter);
+filterTag.addEventListener('change', applyFilter);
+filterTaluka.addEventListener('change', applyFilter);
+document.querySelectorAll('#talukaTable th[data-k]').forEach(th=>{
+  let asc = true;
+  th.addEventListener('click', ()=>{
+    const k = th.dataset.k;
+    const sorted = [...talukas].sort((a,b)=>{
+      let x=a[k], y=b[k];
+      if(typeof x === 'string'){ x=x.toLowerCase(); y=y.toLowerCase(); if(x<y) return asc?-1:1; if(x>y) return asc?1:-1; return 0; }
+      return asc ? x-y : y-x;
+    });
+    asc = !asc; renderTaluka(sorted);
+  });
+});
+</script>
+</body>
+</html>
